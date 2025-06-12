@@ -5,9 +5,13 @@ import uuid
 import json
 import sys
 
+print(f"ENVIRONMENT argument received: {env}")
+print(f"Using environment variable: {environment}")
+
+
 # ✅ Correct environment setup
 environment = sys.argv[1] if len(sys.argv) > 1 else "beta"
-print(f"📦 Environment set to: {environment}")
+print(f"Running with environment: {environment}")
 s3_output_prefix = f"{environment}/"
 
 bucket_name = "mytranscribebucketjcv"
