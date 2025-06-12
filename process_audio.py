@@ -10,7 +10,8 @@ environment = "beta"  # Change to "prod" when ready
 bucket_name = "mytranscribebucketjcv"
 region = "us-east-1"
 target_language_code = "es"  # Set desired language
-audio_input_folder = "/Users/jeffreyvaughn/Desktop/pythoncourse/polly-transcribe/audio_inputs/"
+audio_input_folder = "/tmp/audio_inputs"
+
 
 # --- CLIENTS ---
 s3 = boto3.client("s3", region_name=region)
