@@ -1,4 +1,3 @@
-
 import boto3
 import os
 import time
@@ -6,16 +5,16 @@ import uuid
 import json
 import sys
 
-env = sys.argv[1] if len(sys.argv) > 1 else "beta"
-s3_output_prefix = f"{env}/"
+# ✅ Correct environment setup
+environment = sys.argv[1] if len(sys.argv) > 1 else "beta"
+print(f"📦 Environment set to: {environment}")
+s3_output_prefix = f"{environment}/"
 
-
-
-environment = "beta"  # Change to "prod" when ready
 bucket_name = "mytranscribebucketjcv"
 region = "us-east-1"
-target_language_code = "es"  # Set desired language
+target_language_code = "es"
 audio_input_folder = os.path.join(os.getcwd(), "audio_inputs")
+
 
 
 
