@@ -130,3 +130,4 @@ print(f"✅ Audio uploaded: s3://{bucket_name}/{audio_key}")
 
 environment = os.getenv("ENVIRONMENT", "beta")  # Default to beta if not set up
 
+# This better work
