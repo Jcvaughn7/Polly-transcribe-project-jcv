@@ -5,28 +5,27 @@ import uuid
 import json
 import sys
 
+# Get environment from command line argument, default to 'beta' if none provided
+env = sys.argv[1] if len(sys.argv) > 1 else "beta"
 print(f"ENVIRONMENT argument received: {env}")
-print(f"Using environment variable: {environment}")
 
+environment = env  # use this variable everywhere below
 
-# ✅ Correct environment setup
-environment = sys.argv[1] if len(sys.argv) > 1 else "beta"
-print(f"Running with environment: {environment}")
 s3_output_prefix = f"{environment}/"
 
 bucket_name = "mytranscribebucketjcv"
 region = "us-east-1"
-target_language_code = "es"
+target_language_code = "es"  # Set desired language
 audio_input_folder = os.path.join(os.getcwd(), "audio_inputs")
 
-
-
-
-#  Clients
+# Clients
 s3 = boto3.client("s3", region_name=region)
 transcribe = boto3.client("transcribe", region_name=region)
 translate = boto3.client("translate", region_name=region)
 polly = boto3.client("polly", region_name=region)
+
+# Rest of your code continues...
+
 
 #  Verify audio_inputs/ exists
 if not os.path.exists(audio_input_folder):
