@@ -1,4 +1,4 @@
-name: Merge Workflow
+name: Production Deployment
 
 on:
   push:
@@ -6,20 +6,20 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.11
+          python-version: '3.11'
 
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run processing script for prod
+      - name: Run audio processing script (prod)
         run: python process_audio.py prod
