@@ -10,7 +10,8 @@ environment = "beta"  # Change to "prod" when ready
 bucket_name = "mytranscribebucketjcv"
 region = "us-east-1"
 target_language_code = "es"  # Set desired language
-audio_input_folder = "/tmp/audio_inputs"
+audio_input_folder = os.path.join(os.getcwd(), "audio_inputs_ci")
+
 
 
 # --- CLIENTS ---
