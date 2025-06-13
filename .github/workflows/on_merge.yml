@@ -1,9 +1,9 @@
-name: Run Production Workflow
+name: Run Production Pipeline
 
 on:
   push:
     branches:
-      - main  # Only trigger when code is merged into main
+      - main
 
 jobs:
   run-prod:
@@ -21,10 +21,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Prepare audio_inputs folder
-        run: |
-          mkdir -p /tmp/audio_inputs
-          cp audio_inputs/*.mp3 /tmp/audio_inputs/
+      - name: Create /tmp/audio_inputs folder
+        run: mkdir -p /tmp/audio_inputs
+
+      - name: Copy .mp3 files into /tmp/audio_inputs
+        run: cp audio_inputs/*.mp3 /tmp/audio_inputs/
 
       - name: Run production script
         run: python process_audio.py
