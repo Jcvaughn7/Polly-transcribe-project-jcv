@@ -21,11 +21,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Create /tmp/audio_inputs folder
-        run: mkdir -p /tmp/audio_inputs
+      - name: Create audio_inputs_ci folder
+        run: mkdir -p audio_inputs_ci
 
-      - name: Copy .mp3 files into /tmp/audio_inputs
-        run: cp audio_inputs/*.mp3 /tmp/audio_inputs/
+      - name: Copy .mp3 files into audio_inputs_ci
+        run: cp audio_inputs/*.mp3 audio_inputs_ci/
 
       - name: Run production script
         run: python process_audio.py
