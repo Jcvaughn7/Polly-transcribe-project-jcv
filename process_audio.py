@@ -12,7 +12,9 @@ target_language_code = "es"
 audio_input_folder = "./audio_inputs"
 
 
-s3 = boto3.client("s3", region_name=region)
+
+s3 = boto3.client('s3')  
+s3.upload_file(...)
 transcribe = boto3.client("transcribe", region_name=region)
 translate = boto3.client("translate", region_name=region)
 polly = boto3.client("polly", region_name=region)
