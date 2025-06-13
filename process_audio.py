@@ -11,10 +11,16 @@ region = "us-east-1"
 target_language_code = "es"
 audio_input_folder = "./audio_inputs"
 
+ 
+s3 = boto3.client('s3')
 
+input_path = "./audio_inputs/project_audio-2.mp3"
+bucket_name = "mytranscribebucketjcv"
+s3_input_key = "beta/audio_inputs/project_audio-2.mp3"
 
-s3 = boto3.client('s3')  
-s3.upload_file(...)
+print(f"Uploading {input_path} to s3://{bucket_name}/{s3_input_key}")
+s3.upload_file(input_path, bucket_name, s3_input_key)
+
 transcribe = boto3.client("transcribe", region_name=region)
 translate = boto3.client("translate", region_name=region)
 polly = boto3.client("polly", region_name=region)
