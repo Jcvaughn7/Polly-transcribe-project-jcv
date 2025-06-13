@@ -1,4 +1,4 @@
-name: Run Production Pipeline
+name: Polly Audio Conversion
 
 on:
   push:
@@ -6,30 +6,24 @@ on:
       - main
 
 jobs:
-  run-prod:
+  process-audio:
     runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{secrets.AWS_DEFAULT_REGION}}
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install boto3
 
-      - name: Create audio input folder
-        run: mkdir -p audio_inputs_ci
-
-      - name: Copy .mp3 files into audio_inputs
-        run: cp audio_inputs/*.mp3 audio_inputs
-
-      - name: Run production script
+      - name: Run audio processing script
         run: python process_audio.py
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          ENVIRONMENT: prod
