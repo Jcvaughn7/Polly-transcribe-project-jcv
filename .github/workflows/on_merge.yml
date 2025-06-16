@@ -22,5 +22,4 @@ jobs:
       - name: Process_audio (prod)
         run: |
           pip install boto3 --upgrade
-          cd caip_03_02
           python process_audio.py
