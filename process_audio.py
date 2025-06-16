@@ -136,5 +136,5 @@ audio_key = f"{environment}/audio_outputs/{output_audio_filename}"
 s3.upload_file(local_audio_path, bucket_name, audio_key)
 print(f"Audio uploaded: s3://{bucket_name}/{audio_key}")
 
-environment = os.getenv("ENVIRONMENT", "beta")  # Default to beta if not set up
+environment = os.getenv("ENVIRONMENT", "beta")  # Default to beta if not set up.
 
