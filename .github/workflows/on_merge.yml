@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  call_bedrock:
+  call_process_audio:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -22,5 +22,5 @@ jobs:
       - name: Process_audio (prod)
         run: |
           pip install boto3 --upgrade
-          cd caip_03_02
+          cd process_audio.py
           python process_audio.py
